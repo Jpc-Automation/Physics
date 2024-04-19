@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Abstractions\Abstractions.csproj" />
     <ProjectReference Include="..\..\src\Cylinder\Cylinder.csproj" />
-    <ProjectReference Include="..\..\src\Shared\Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
