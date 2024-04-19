@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Jpc.Physics.Cylinder</RootNamespace>
+    <AssemblyName>Jpc.Physics.Cylinder</AssemblyName>
+    <PackageId>Jpc.Physics.Cylinder</PackageId>
+    <Title>Jpc.Physics.Cylinder</Title>
+    <Authors>Jeffrey</Authors>
+    <Company>JPC Automatisering</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Jpc Physics Cylinder/Coil project/package</Description>
+    <Summary>An Physics project/package to do calculations regarding cylinders and coils</Summary>
+    <PackageProjectUrl>https://github.com/Jpc-Automation/Jpc.Physics.Cylinder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jpc-Automation/Jpc.Physics.Cylinder</RepositoryUrl>
+    <PackageTags>Physics;Cylinder;Coil;Abstractions Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <Version>1.0.0</Version>
+    <PackageReleaseNotes>
+    </PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DocumentationFile>bin\$(Configuration)\Jpc.Physics.Cylinder.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591;1573;1712</NoWarn>
+  </PropertyGroup>
+</Project>
