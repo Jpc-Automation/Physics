@@ -10,8 +10,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Jpc Physics Abstractions project/package</Description>
     <Summary>An Physics project/package with Abstractions and value types</Summary>
-    <PackageProjectUrl>https://github.com/Jpc-Automation/Jpc.Physics.Abstractions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Jpc-Automation/Jpc.Physics.Abstractions</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Jpc-Automation/Physics/tree/master/src/Abstractions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jpc-Automation/Physics/Abstractions</RepositoryUrl>
     <PackageTags>Physics;Abstractions Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <Version>1.0.0</Version>
@@ -21,6 +21,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <DocumentationFile>bin\$(Configuration)\Jpc.Physics.Abstractions.xml</DocumentationFile>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +31,9 @@
   <PropertyGroup>
     <NoWarn>1701;1702;1591;1573;1712</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>

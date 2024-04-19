@@ -10,8 +10,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Jpc Physics Cylinder/Coil project/package</Description>
     <Summary>An Physics project/package to do calculations regarding cylinders and coils</Summary>
-    <PackageProjectUrl>https://github.com/Jpc-Automation/Jpc.Physics.Cylinder</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Jpc-Automation/Jpc.Physics.Cylinder</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Jpc-Automation/Physics/tree/master/src/Cylinder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jpc-Automation/Physics</RepositoryUrl>
     <PackageTags>Physics;Cylinder;Coil;Abstractions Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <Version>1.0.0</Version>
@@ -21,6 +21,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <DocumentationFile>bin\$(Configuration)\Jpc.Physics.Cylinder.xml</DocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,4 +31,8 @@
   <PropertyGroup>
     <NoWarn>1701;1702;1591;1573;1712</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
