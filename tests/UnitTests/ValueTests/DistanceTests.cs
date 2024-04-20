@@ -1,7 +1,7 @@
 ﻿using Jpc.Physics.Value;
 
 namespace PhysicsUnitTests.ValueTests;
-public class DistanceValueTests
+public class DistanceTests
 {
     [Fact]
     private void Value_Equality_Equal()
