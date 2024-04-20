@@ -3,6 +3,21 @@
 
 ## Documentation
 
-Physics Abstractions
+ValueTypes with conversions
 
-- ValueType with conversions
+- Acceleration
+- Angular
+- Density
+- Energy
+- Mass
+- Pressure
+- Temperature
+- Velocity
+
+
+## Usage Distance
+...
+var valueMillimeter = new Distance(1265, Distance.Types.Millimeters);
+var valueMeter = valueMillimeter.ToMeters();
+var valueCentimeter = valueMillimeter.ToCentimeters();
+...

@@ -1,4 +1,5 @@
 ﻿using Jpc.Physics;
+using Jpc.Physics.Value;
 
 Console.WriteLine("Hello, World!");
 
@@ -23,5 +24,10 @@ var turnsFromDiameter = Cylinder.CalculateNumberOfTurns(_outerDiameter, _innerDi
 var outerDiameterFromStrip = Cylinder.CalculateOuterDiameterFromStrip(_stripLength, _innerDiameter, _thickness);
 
 var sheetWeight = Cylinder.CalculateWeightFromStrip(1, 1000, 1, 7.870);
+
+
+var valueMillimeter = new Distance(1265, Distance.Types.Millimeters);
+var valueMeter = valueMillimeter.ToMeters();
+var valueCentimeter = valueMillimeter.ToCentimeters();
 
 Console.ReadLine();
