@@ -72,7 +72,7 @@ public class Cylinder
     /// <param name="innerDiameter">inner diameter (mm)</param>
     /// <param name="stripThickness">strip thickness (mm)</param>
     /// <returns>The outer Diameter (mm)</returns>
-    public static double CalculateDiameterFromStrip(double innerDiameter, double stripLength, double stripThickness)
+    public static double CalculateOuterDiameterFromStrip(double innerDiameter, double stripLength, double stripThickness)
     {
         var outerDiameter = Math.Sqrt(4 * stripThickness * stripLength * 1000 / Math.PI + innerDiameter * innerDiameter);
         return outerDiameter;
@@ -86,10 +86,37 @@ public class Cylinder
     /// <param name="stripWidth">strip width (mm)</param>
     /// <param name="density">density (g/cm3)</param>
     /// <returns>The outer Diameter (mm)</returns>
-    public static double CalculateDiameterValueFromWeight(double weight, double innerDiameter, double stripWidth, double density)
+    public static double CalculateOuterDiameterFromWeight(double weight, double innerDiameter, double stripWidth, double density)
     {
         var outerDiameter = Math.Sqrt(4 * weight * 1000 / (Math.PI * stripWidth * (density / 1000)) + innerDiameter * innerDiameter);
         return outerDiameter;
+    }
+
+    /// <summary>
+    /// Formula: <code>Inner Diameter = √(Outer Diameter² - (4 * Strip Thickness * Strip Length * 1000) / π)</code>
+    /// </summary>
+    /// <param name="outerDiameter"></param>
+    /// <param name="stripLength"></param>
+    /// <param name="stripThickness"></param>
+    /// <returns>The inner diameter</returns>
+    public static double CalculateInnerDiameterFromStrip(double outerDiameter, double stripLength, double stripThickness)
+    {
+        var innerDiameter = Math.Sqrt(Math.Pow(outerDiameter, 2) - 4 * stripThickness * stripLength * 1000 / Math.PI);
+        return innerDiameter;
+    }
+
+    /// <summary>
+    /// Formula: <code>Inner Diameter = √(Outer Diameter² - (4 * Weight) / (π * Strip Width * (Density / 1000)))</code>
+    /// </summary>
+    /// <param name="weight"></param>
+    /// <param name="outerDiameter"></param>
+    /// <param name="stripWidth"></param>
+    /// <param name="density"></param>
+    /// <returns>The inner diameter</returns>
+    public static double CalculateInnerDiameterFromWeight(double weight, double outerDiameter, double stripWidth, double density)
+    {
+        var innerDiameter = Math.Sqrt(Math.Pow(outerDiameter, 2) - 4 * weight / (Math.PI * stripWidth * (density / 1000)));
+        return innerDiameter;
     }
 
     /// <summary>
@@ -121,7 +148,7 @@ public class Cylinder
     }
 
     /// <summary>
-    /// 
+    /// Formula: <code>Weight = Volume * Density / 1000</code>
     /// </summary>
     /// <param name="volume">volume (cm3)</param>
     /// <param name="density">density in (g/cm3)</param>
@@ -153,7 +180,7 @@ public class Cylinder
     }
 
     /// <summary>
-    /// 
+    /// Formula: <code>Volume = ((Outer Radius² - Inner Radius²) * π * Width) / 1000</code>
     /// </summary>
     /// <param name="outerRadius">outer radius (mm)</param>
     /// <param name="innerRadius">inner radius (mm)</param>
@@ -194,7 +221,7 @@ public class Cylinder
     }
 
     /// <summary>
-    /// Calculate the moment of inertia Z
+    /// Formula: <code>Moment of Inertia (Z-axis) = 0.5 * Mass * (Outer Radius² + Inner Radius²)</code>
     /// </summary>
     /// <param name="mass"></param>
     /// <param name="innerRadius"></param>
@@ -209,6 +236,7 @@ public class Cylinder
 
     /// <summary>
     /// Calculate the moment of inertia in the x and y directions
+    /// Formula: <code>Moment of Inertia (XY-plane) = 1/12 * Mass * (3 * (Inner Radius² + Outer Radius²) + Height²)</code>
     /// </summary>
     /// <param name="mass"></param>
     /// <param name="innerRadius"></param>
