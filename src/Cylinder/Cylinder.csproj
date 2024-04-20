@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Jpc.Physics.Cylinder</RootNamespace>
+    <RootNamespace>Jpc.Physics</RootNamespace>
     <AssemblyName>Jpc.Physics.Cylinder</AssemblyName>
     <PackageId>Jpc.Physics.Cylinder</PackageId>
     <Title>Jpc.Physics.Cylinder</Title>
@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/Jpc-Automation/Physics</RepositoryUrl>
     <PackageTags>Physics;Cylinder;Coil;Abstractions Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.0.0</Version>
+    <Version>1.0.2</Version>
     <PackageReleaseNotes>
     </PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>

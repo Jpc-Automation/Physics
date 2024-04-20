@@ -1,6 +1,6 @@
-﻿using Physics.Cylinder;
+﻿using Jpc.Physics;
 
-namespace Jpc.Physics.UnitTests;
+namespace PhysicsUnitTests;
 public class CylinderTests
 {
     [Theory]

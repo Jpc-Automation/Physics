@@ -1,6 +1,6 @@
 ﻿using Jpc.Physics.Abstractions;
 
-namespace Jpc.Physics.UnitTests;
+namespace PhysicsUnitTests;
 public class PhysicsValueTests
 {
     [Fact]

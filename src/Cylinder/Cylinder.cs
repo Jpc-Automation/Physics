@@ -1,5 +1,4 @@
-﻿
-namespace Physics.Cylinder;
+﻿namespace Jpc.Physics;
 
 /// <summary>
 /// Default units: mass = kg, density = g/cm3
@@ -188,7 +187,7 @@ public class Cylinder
     public static double CalculateDensity(double weight, double volume)
     {
         // Calculate the density to Kg/cm³
-        double Density = weight / volume;
+        var Density = weight / volume;
 
         // Convert to g/cm³
         return Density * 1000;
@@ -204,7 +203,7 @@ public class Cylinder
     /// <returns>The moment of inertia Z (kg*m^2)</returns>
     public static double CalculateMomentOfInertiaZ(double mass, double outerRadius, double innerRadius, double height)
     {
-        double momentOfInertia = 1.0 / 2.0 * mass * (Math.Pow(outerRadius, 2) + Math.Pow(innerRadius, 2));
+        var momentOfInertia = 1.0 / 2.0 * mass * (Math.Pow(outerRadius, 2) + Math.Pow(innerRadius, 2));
         return momentOfInertia;
     }
 
@@ -218,7 +217,7 @@ public class Cylinder
     /// <returns>The moment of inertia XY (kg*m^2)</returns>
     public static double CalculateMomentOfInertiaXY(double mass, double outerRadius, double innerRadius, double height)
     {
-        double momentOfInertiaXY = 1.0 / 12.0 * mass * (3 * (innerRadius * innerRadius + outerRadius * outerRadius) + height * height);
+        var momentOfInertiaXY = 1.0 / 12.0 * mass * (3 * (innerRadius * innerRadius + outerRadius * outerRadius) + height * height);
         return momentOfInertiaXY;
     }
 
@@ -229,7 +228,7 @@ public class Cylinder
     /// <returns>m2</returns>
     public static double CalculateBaseSurfaceArea(double radius)
     {
-        double baseSurfaceArea = Math.PI * radius * radius;
+        var baseSurfaceArea = Math.PI * radius * radius;
         return baseSurfaceArea * 2;
     }
 
@@ -241,7 +240,7 @@ public class Cylinder
     /// <returns>The Surface area</returns>
     public static double CalculateLateralSurfaceArea(double radius, double width)
     {
-        double lateralSurfaceArea = 2 * Math.PI * radius * width;
+        var lateralSurfaceArea = 2 * Math.PI * radius * width;
         return lateralSurfaceArea;
     }
 
@@ -253,7 +252,7 @@ public class Cylinder
     /// <returns></returns>
     public static double CalculateTotalSurfaceArea(double radius, double height)
     {
-        double totalSurfaceArea = 2 * Math.PI * radius * (radius + height);
+        var totalSurfaceArea = 2 * Math.PI * radius * (radius + height);
         return totalSurfaceArea;
     }
 

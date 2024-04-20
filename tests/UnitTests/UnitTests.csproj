@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <RootNamespace>Jpc.Physics.UnitTests</RootNamespace>
+    <RootNamespace>PhysicsUnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
