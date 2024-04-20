@@ -1,8 +1,6 @@
 ﻿using Jpc.Physics;
 using Jpc.Physics.Value;
 
-Console.WriteLine("Hello, World!");
-
 const double _innerDiameter = 650;
 const double _outerDiameter = 1200;
 const double _thickness = 1;
@@ -25,9 +23,19 @@ var outerDiameterFromStrip = Cylinder.CalculateOuterDiameterFromStrip(_stripLeng
 
 var sheetWeight = Cylinder.CalculateWeightFromStrip(1, 1000, 1, 7.870);
 
-
+// Conversion
 var valueMillimeter = new Distance(1265, Distance.Types.Millimeters);
 var valueMeter = valueMillimeter.ToMeters();
 var valueCentimeter = valueMillimeter.ToCentimeters();
+
+// Compare equal
+var valueEqualA = new Distance(1265, Distance.Types.Millimeters);
+var valueEqualB = new Distance(1265, Distance.Types.Millimeters);
+var isEqual = valueEqualA = valueEqualB;
+
+// Compare not equal
+var valueNotEqualA = new Distance(1211, Distance.Types.Millimeters);
+var valueNotEqualB = new Distance(1265, Distance.Types.Millimeters);
+var isNotEqual = valueNotEqualA = valueNotEqualB;
 
 Console.ReadLine();
