@@ -1,46 +1,61 @@
-﻿using Jpc.Physics.Value.Common;
-using Jpc.Physics.Value.Enums;
-
-namespace Jpc.Physics.Value;
-public class Mass : ValueBase
+﻿namespace Jpc.Physics.Value;
+public class Mass : ValueBase<double>
 {
     private double _baseValue_kg => GetBaseValue();
 
-    public Mass(double value, MassTypes valueType, string? annotation = null)
+    public Mass(double value, Types valueType, string? annotation = null)
     {
         Value = value;
         ValueType = valueType;
         Annotation = annotation;
     }
 
-    public double Value { get; private set; }
-    public MassTypes ValueType { get; private set; }
-    public string? Annotation { get; private set; }
+    public Types ValueType { get; private set; }
 
-    public static Mass CreateFromMilligrams(double value) => new Mass(value, MassTypes.Milligram, "mg");
-    public static Mass CreateFromGrams(double value) => new Mass(value, MassTypes.Gram, "g");
-    public static Mass CreateFromKilograms(double value) => new Mass(value, MassTypes.Kilogram, "kg");
-    public static Mass CreateFromTons(double value) => new Mass(value, MassTypes.Ton, "t");
-    public static Mass CreateFromPounds(double value) => new Mass(value, MassTypes.Pound, "lb");
-    public static Mass CreateFromOunces(double value) => new Mass(value, MassTypes.Ounce, "oz");
+    public enum Types
+    {
+        Milligram,
+        Gram,
+        Kilogram,
+        Ton,
+        Pound,
+        Ounce,
+    }
 
-    public double ToNanometers() => _baseValue_kg / Constants.Kg.MilliGram;
-    public double ToGrams() => _baseValue_kg / Constants.Kg.Gram;
-    public double ToKilograms() => _baseValue_kg / Constants.Kg.KiloGram;
-    public double ToTons() => _baseValue_kg * Constants.Kg.Ton;
-    public double ToPounds() => _baseValue_kg * Constants.Kg.Pounds;
-    public double ToOunces() => _baseValue_kg * Constants.Kg.Ounces;
+    public static class Constants
+    {
+        public const double MilliGram = 0.000001;
+        public const double Gram = 0.001;
+        public const double KiloGram = 1;
+        public const double Ton = 1000;
+        public const double Pounds = 2.205;
+        public const double Ounces = 35.273962;
+    }
+
+    public static Mass CreateFromMilligrams(double value) => new Mass(value, Types.Milligram, "mg");
+    public static Mass CreateFromGrams(double value) => new Mass(value, Types.Gram, "g");
+    public static Mass CreateFromKilograms(double value) => new Mass(value, Types.Kilogram, "kg");
+    public static Mass CreateFromTons(double value) => new Mass(value, Types.Ton, "t");
+    public static Mass CreateFromPounds(double value) => new Mass(value, Types.Pound, "lb");
+    public static Mass CreateFromOunces(double value) => new Mass(value, Types.Ounce, "oz");
+
+    public double ToNanometers() => _baseValue_kg / Constants.MilliGram;
+    public double ToGrams() => _baseValue_kg / Constants.Gram;
+    public double ToKilograms() => _baseValue_kg / Constants.KiloGram;
+    public double ToTons() => _baseValue_kg * Constants.Ton;
+    public double ToPounds() => _baseValue_kg * Constants.Pounds;
+    public double ToOunces() => _baseValue_kg * Constants.Ounces;
 
     private double GetBaseValue()
     {
         switch (ValueType)
         {
-            case MassTypes.Milligram: return Value * Constants.Kg.MilliGram;
-            case MassTypes.Gram: return Value * Constants.Kg.Gram;
-            case MassTypes.Kilogram: return Value / Constants.Kg.KiloGram;
-            case MassTypes.Ton: return Value / Constants.Kg.Ton;
-            case MassTypes.Pound: return Value / Constants.Kg.Pounds;
-            case MassTypes.Ounce: return Value / Constants.Kg.Ounces;
+            case Types.Milligram: return Value * Constants.MilliGram;
+            case Types.Gram: return Value * Constants.Gram;
+            case Types.Kilogram: return Value / Constants.KiloGram;
+            case Types.Ton: return Value / Constants.Ton;
+            case Types.Pound: return Value / Constants.Pounds;
+            case Types.Ounce: return Value / Constants.Ounces;
             default: return double.NaN;
         }
     }

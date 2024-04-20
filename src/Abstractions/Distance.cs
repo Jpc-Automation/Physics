@@ -1,52 +1,71 @@
-﻿using Jpc.Physics.Value.Common;
-using Jpc.Physics.Value.Enums;
-
-namespace Jpc.Physics.Value;
-public class Distance : ValueBase
+﻿namespace Jpc.Physics.Value;
+public class Distance : ValueBase<double>
 {
     private double _baseValue_MM => GetBaseValue();
 
-    public Distance(double value, DistanceTypes valueType, string? annotation = null)
+    public Distance(double value, Types valueType, string? annotation = null)
     {
         Value = value;
-        ValueType = valueType;
         Annotation = annotation;
+        ValueType = valueType;
     }
 
-    public double Value { get; private set; }
-    public DistanceTypes ValueType { get; private set; }
-    public string? Annotation { get; private set; }
+    public Types ValueType { get; private set; }
 
-    public static Distance CreateFromNanometers(double value) => new Distance(value, DistanceTypes.Nanometers, "nm");
-    public static Distance CreateFromMicrometers(double value) => new Distance(value, DistanceTypes.Micrometers, "µm");
-    public static Distance CreateFromMillimeters(double value) => new Distance(value, DistanceTypes.Millimeters, "mm");
-    public static Distance CreateFromCentimeters(double value) => new Distance(value, DistanceTypes.Centimeters, "cm");
-    public static Distance CreateFromDecimeters(double value) => new Distance(value, DistanceTypes.Decimeters, "dm");
-    public static Distance CreateFromMeters(double value) => new Distance(value, DistanceTypes.Meters, "m");
-    public static Distance CreateFromHectometers(double value) => new Distance(value, DistanceTypes.Hectometers, "hm");
-    public static Distance CreateFromKilometers(double value) => new Distance(value, DistanceTypes.Kilometers, "km");
+    public enum Types
+    {
+        Nanometers,
+        Micrometers,
+        Millimeters,
+        Centimeters,
+        Decimeters,
+        Meters,
+        Hectometers,
+        Kilometers
+    }
 
-    public double ToNanometers() => _baseValue_MM * Constants.Mm.Nanometer;
-    public double ToMicrometers() => _baseValue_MM * Constants.Mm.Micrometer;
-    public double ToMillimeters() => _baseValue_MM / Constants.Mm.Millimeter;
-    public double ToCentimeters() => _baseValue_MM / Constants.Mm.Centimeter;
-    public double ToDecimeters() => _baseValue_MM / Constants.Mm.Decimeter;
-    public double ToMeters() => _baseValue_MM / Constants.Mm.Meter;
-    public double ToHectometers() => _baseValue_MM / Constants.Mm.HectoMeter;
-    public double ToKilometers() => _baseValue_MM / Constants.Mm.KiloMeter;
+    public static class Constants
+    {
+        public const double Nanometer = 1000 * Micrometer;
+        public const double Micrometer = 1000;
+        public const double Millimeter = 1;
+        public const double Centimeter = 10;
+        public const double Decimeter = 100;
+        public const double Meter = 1000;
+        public const double HectoMeter = 100 * Meter;
+        public const double KiloMeter = 1000 * Meter;
+    }
+
+    public static Distance CreateFromNanometers(double value) => new Distance(value, Types.Nanometers, "nm");
+    public static Distance CreateFromMicrometers(double value) => new Distance(value, Types.Micrometers, "µm");
+    public static Distance CreateFromMillimeters(double value) => new Distance(value, Types.Millimeters, "mm");
+    public static Distance CreateFromCentimeters(double value) => new Distance(value, Types.Centimeters, "cm");
+    public static Distance CreateFromDecimeters(double value) => new Distance(value, Types.Decimeters, "dm");
+    public static Distance CreateFromMeters(double value) => new Distance(value, Types.Meters, "m");
+    public static Distance CreateFromHectometers(double value) => new Distance(value, Types.Hectometers, "hm");
+    public static Distance CreateFromKilometers(double value) => new Distance(value, Types.Kilometers, "km");
+
+    public double ToNanometers() => _baseValue_MM * Constants.Nanometer;
+    public double ToMicrometers() => _baseValue_MM * Constants.Micrometer;
+    public double ToMillimeters() => _baseValue_MM / Constants.Millimeter;
+    public double ToCentimeters() => _baseValue_MM / Constants.Centimeter;
+    public double ToDecimeters() => _baseValue_MM / Constants.Decimeter;
+    public double ToMeters() => _baseValue_MM / Constants.Meter;
+    public double ToHectometers() => _baseValue_MM / Constants.HectoMeter;
+    public double ToKilometers() => _baseValue_MM / Constants.KiloMeter;
 
     private double GetBaseValue()
     {
         switch (ValueType)
         {
-            case DistanceTypes.Nanometers: return Value / Constants.Mm.Nanometer;
-            case DistanceTypes.Micrometers: return Value / Constants.Mm.Micrometer;
-            case DistanceTypes.Millimeters: return Value * Constants.Mm.Millimeter;
-            case DistanceTypes.Centimeters: return Value * Constants.Mm.Centimeter;
-            case DistanceTypes.Decimeters: return Value * Constants.Mm.Meter;
-            case DistanceTypes.Meters: return Value * Constants.Mm.Meter;
-            case DistanceTypes.Hectometers: return Value * Constants.Mm.HectoMeter;
-            case DistanceTypes.Kilometers: return Value * Constants.Mm.KiloMeter;
+            case Types.Nanometers: return Value / Constants.Nanometer;
+            case Types.Micrometers: return Value / Constants.Micrometer;
+            case Types.Millimeters: return Value * Constants.Millimeter;
+            case Types.Centimeters: return Value * Constants.Centimeter;
+            case Types.Decimeters: return Value * Constants.Meter;
+            case Types.Meters: return Value * Constants.Meter;
+            case Types.Hectometers: return Value * Constants.HectoMeter;
+            case Types.Kilometers: return Value * Constants.KiloMeter;
             default: return double.NaN;
         }
     }

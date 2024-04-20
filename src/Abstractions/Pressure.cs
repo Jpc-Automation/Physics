@@ -1,19 +1,23 @@
-﻿using Jpc.Physics.Value.Common;
-using Jpc.Physics.Value.Enums;
-
-namespace Jpc.Physics.Value;
-public class Pressure : ValueBase
+﻿namespace Jpc.Physics.Value;
+public class Pressure : ValueBase<double>
 {
-    public Pressure(double value, PressureTypes valueType, string? annotation = null)
+    public Pressure(double value, Types valueType, string? annotation = null)
     {
         Value = value;
         ValueType = valueType;
         Annotation = annotation;
     }
 
-    public double Value { get; private set; }
-    public PressureTypes ValueType { get; private set; }
-    public string? Annotation { get; private set; }
+    public Types ValueType { get; private set; }
+
+    public enum Types
+    {
+        Pascal_Pa,
+        Atmosphere_atm,
+        Bar,
+        Torr,
+        PerSquareInch_psi
+    }
 
 
     public override string ToString()

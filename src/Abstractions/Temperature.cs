@@ -1,57 +1,70 @@
-﻿using Jpc.Physics.Value.Common;
-using Jpc.Physics.Value.Enums;
-
-namespace Jpc.Physics.Value;
-public class Temperature : ValueBase
+﻿namespace Jpc.Physics.Value;
+public class Temperature : ValueBase<double>
 {
     private double _baseValue_C => GetBaseValue();
 
-    public Temperature(double value, TemperatureTypes valueType, string? annotation = null)
+    public Temperature(double value, Types valueType, string? annotation = null)
     {
         Value = value;
         ValueType = valueType;
         Annotation = annotation;
     }
 
-    public double Value { get; set; }
-    public TemperatureTypes ValueType { get; set; }
-    public string? Annotation { get; set; }
+    public Types ValueType { get; set; }
+
+    public enum Types
+    {
+        Kelvin,
+        Celsius,
+        Fahrenheit,
+    }
+
+    public static class Constants
+    {
+        public const double AbsoluteMinKelvin = 0;
+        public const double AbsoluteMinCelsius = -273.15;
+        public const double AbsoluteFahrenheit = -460;
+
+        public const double Celsius = 1;
+        public const double Kelvin = 274.15;
+        public const double Fahrenheit = -33.8;
+    }
 
     public static Temperature CreateKelvin(double value)
     {
-        if (value < Constants.Temperature.AbsoluteMinKelvin)
+        if (value < Constants.AbsoluteMinKelvin)
             throw new InvalidOperationException("Kelvin cannot be lower as 0");
 
-        return new Temperature(value, TemperatureTypes.Kelvin, "K");
+        return new Temperature(value, Types.Kelvin, "K");
     }
 
     public static Temperature CreateCelsius(double value)
     {
-        if (value < Constants.Temperature.AbsoluteMinCelsius)
+        if (value < Constants.AbsoluteMinCelsius)
             throw new InvalidOperationException("Celsius cannot be lower as -273.15 °C");
 
-        return new Temperature(value, TemperatureTypes.Kelvin, "°C");
+        return new Temperature(value, Types.Kelvin, "°C");
     }
 
     public static Temperature CreateFahrenheit(double value)
     {
-        if (value < Constants.Temperature.AbsoluteFahrenheit)
+        if (value < Constants.AbsoluteFahrenheit)
             throw new InvalidOperationException("Celsius cannot be lower as -273.15 °C");
 
-        return new Temperature(value, TemperatureTypes.Fahrenheit, "°F");
+        return new Temperature(value, Types.Fahrenheit, "°F");
     }
 
-    public double ToKelvin() => _baseValue_C * Constants.Temperature.Kelvin;
-    public double ToCelsius() => _baseValue_C * Constants.Temperature.Celsius;
-    public double ToFahrenheit() => _baseValue_C * Constants.Temperature.Fahrenheit;
+    public double ToKelvin() => _baseValue_C * Constants.Kelvin;
+    public double ToCelsius() => _baseValue_C * Constants.Celsius;
+    public double ToFahrenheit() => _baseValue_C * Constants.Fahrenheit;
 
     private double GetBaseValue()
     {
         switch (ValueType)
         {
-            case TemperatureTypes.Celsius: return Value / Constants.Temperature.Celsius;
-            case TemperatureTypes.Fahrenheit: return Value / Constants.Temperature.Fahrenheit;
-            case TemperatureTypes.Kelvin: return Value / Constants.Temperature.Kelvin;
+            case Types.Celsius: return Value / Constants.Celsius;
+            case Types.Fahrenheit: return Value / Constants.Fahrenheit;
+            case Types.Kelvin: return Value / Constants.Kelvin;
             default: return double.NaN;
         }
     }

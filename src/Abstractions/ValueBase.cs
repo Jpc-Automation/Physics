@@ -1,7 +1,11 @@
-﻿namespace Jpc.Physics.Value.Common;
-public abstract class ValueBase : IComparable, IComparable<ValueBase>
+﻿namespace Jpc.Physics.Value;
+public abstract class ValueBase<TValue> : IComparable, IComparable<ValueBase<TValue>> where TValue : struct
 {
     private int? _cachedHashCode;
+
+    public TValue Value { get; protected set; }
+    public string? Annotation { get; protected set; }
+
 
     protected abstract IEnumerable<object> GetEqualityComponents();
 
@@ -13,7 +17,7 @@ public abstract class ValueBase : IComparable, IComparable<ValueBase>
         if (GetUnproxiedType(this) != GetUnproxiedType(obj))
             return false;
 
-        var valueObject = (ValueBase)obj;
+        var valueObject = (ValueBase<TValue>)obj;
 
         return GetEqualityComponents().SequenceEqual(valueObject.GetEqualityComponents());
     }
@@ -35,6 +39,11 @@ public abstract class ValueBase : IComparable, IComparable<ValueBase>
         return _cachedHashCode.Value;
     }
 
+    public override string ToString()
+    {
+        return Value.ToString() + ' ' + Annotation;
+    }
+
     public int CompareTo(object? obj)
     {
         if (obj == null)
@@ -46,7 +55,7 @@ public abstract class ValueBase : IComparable, IComparable<ValueBase>
         if (thisType != otherType)
             return string.Compare(thisType.ToString(), otherType.ToString(), StringComparison.Ordinal);
 
-        var other = (ValueBase)obj;
+        var other = (ValueBase<TValue>)obj;
 
         var components = GetEqualityComponents().ToArray();
         var otherComponents = other.GetEqualityComponents().ToArray();
@@ -78,12 +87,12 @@ public abstract class ValueBase : IComparable, IComparable<ValueBase>
         return object1.Equals(object2) ? 0 : -1;
     }
 
-    public int CompareTo(ValueBase? other)
+    public int CompareTo(ValueBase<TValue>? other)
     {
         return CompareTo(other as object);
     }
 
-    public static bool operator ==(ValueBase a, ValueBase b)
+    public static bool operator ==(ValueBase<TValue> a, ValueBase<TValue> b)
     {
         if (a is null && b is null)
             return true;
@@ -94,7 +103,7 @@ public abstract class ValueBase : IComparable, IComparable<ValueBase>
         return a.Equals(b);
     }
 
-    public static bool operator !=(ValueBase a, ValueBase b)
+    public static bool operator !=(ValueBase<TValue> a, ValueBase<TValue> b)
     {
         return !(a == b);
     }

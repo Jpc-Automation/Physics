@@ -1,34 +1,41 @@
-﻿using Jpc.Physics.Value.Common;
-using Jpc.Physics.Value.Enums;
-
-namespace Jpc.Physics.Value;
-public class AngularValue : ValueBase
+﻿namespace Jpc.Physics.Value;
+public class AngularValue : ValueBase<double>
 {
     private double _baseValue_Degrees => GetBaseValue();
 
-    public AngularValue(double value, AngularTypes valueType, string? annotation = null)
+    public AngularValue(double value, Types valueType, string? annotation = null)
     {
         Value = value;
         ValueType = valueType;
         Annotation = annotation;
     }
 
-    public double Value { get; private set; }
-    public AngularTypes ValueType { get; private set; }
-    public string? Annotation { get; private set; }
+    public Types ValueType { get; private set; }
 
-    public static AngularValue CreateFromDegrees(double value) => new AngularValue(value, AngularTypes.Degrees, "°");
-    public static AngularValue CreateFromRadians(double value) => new AngularValue(value, AngularTypes.Radians, "rad");
+    public enum Types
+    {
+        Degrees,
+        Radians
+    }
+
+    public static class Constants
+    {
+        public const double Degrees = 1;
+        public const double Radians = 0.0174532925;
+    }
+
+    public static AngularValue CreateFromDegrees(double value) => new AngularValue(value, Types.Degrees, "°");
+    public static AngularValue CreateFromRadians(double value) => new AngularValue(value, Types.Radians, "rad");
 
     public double ToDegrees() => _baseValue_Degrees;
-    public double ToRadians() => _baseValue_Degrees * Constants.Angular.Radians;
+    public double ToRadians() => _baseValue_Degrees * Constants.Radians;
 
     private double GetBaseValue()
     {
         switch (ValueType)
         {
-            case AngularTypes.Degrees: return Value / Constants.Angular.Degrees;
-            case AngularTypes.Radians: return Value / Constants.Angular.Radians;
+            case Types.Degrees: return Value / Constants.Degrees;
+            case Types.Radians: return Value / Constants.Radians;
             default: return double.NaN;
         }
     }
