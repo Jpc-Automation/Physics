@@ -1,5 +1,5 @@
 
-[![NuGet](https://img.shields.io/nuget/v/Jpc.Physics.Abstractions.svg)](https://www.nuget.org/packages/Jpc.Physics.Abstractions)[![NuGet](https://img.shields.io/nuget/dt/Jpc.Physics.Abstractions.svg)](https://www.nuget.org/packages/Jpc.Physics.Abstractions)
+[![NuGet](https://img.shields.io/nuget/v/Jpc.Physics.Value.svg)](https://www.nuget.org/packages/Jpc.Physics.Value)[![NuGet](https://img.shields.io/nuget/dt/Jpc.Physics.Value.svg)](https://www.nuget.org/packages/Jpc.Physics.Value)
 
 ## Documentation
 
