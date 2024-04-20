@@ -1,4 +1,6 @@
-﻿namespace Jpc.Physics;
+﻿using Jpc.Physics.Value;
+
+namespace Jpc.Physics;
 
 /// <summary>
 /// Default units: mass = kg, density = g/cm3
@@ -20,7 +22,9 @@ public class Cylinder
     //public double LateralSurfaceArea { get; private set; }
     //public double TotalSurfaceArea { get; private set; }
 
-    // ToDo: Calculate innerDiameter from outerDiameter and thickness
+
+    public static double CalculateStripLengthFromDiameter(Distance outerDiameter, Distance innerDiameter, Distance stripThickness)
+        => CalculateStripLengthFromDiameter(outerDiameter.ToMillimeters(), innerDiameter.ToMillimeters(), stripThickness.ToMillimeters());
 
     /// <summary>
     /// When input is mm the output will be mm to
@@ -36,6 +40,9 @@ public class Cylinder
         var length = (outerDiameter * outerDiameter - innerDiameter * innerDiameter) * Math.PI / (4 * stripThickness);
         return length;
     }
+
+    public static double CalculateStripLengthFromWeight(Mass weight, Distance stripWidth, Distance stripThickness, Density density)
+        => CalculateStripLengthFromWeight(weight.ToKilograms(), stripWidth.ToMillimeters(), stripThickness.ToMillimeters(), density.ToKgCm3());
 
     /// <summary>
     /// Formula: G / (b * s * g)

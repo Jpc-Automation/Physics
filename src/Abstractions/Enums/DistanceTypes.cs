@@ -1,5 +1,5 @@
-﻿namespace Jpc.Physics.Abstractions;
-public enum ValueTypes
+﻿namespace Jpc.Physics.Value.Enums;
+public enum DistanceTypes
 {
     Nanometers,
     Micrometers,

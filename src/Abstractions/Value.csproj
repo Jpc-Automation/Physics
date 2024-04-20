@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Jpc.Physics.Abstractions</RootNamespace>
-    <AssemblyName>Jpc.Physics.Abstractions</AssemblyName>
-    <PackageId>Jpc.Physics.Abstractions</PackageId>
-    <Title>Jpc.Physics.Abstractions</Title>
+    <RootNamespace>Jpc.Physics.Value</RootNamespace>
+    <AssemblyName>Jpc.Physics.Value</AssemblyName>
+    <PackageId>Jpc.Physics.Value</PackageId>
+    <Title>Jpc.Physics.Value</Title>
     <Authors>Jeffrey</Authors>
     <Company>JPC Automatisering</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Jpc Physics Abstractions project/package</Description>
-    <Summary>An Physics project/package with Abstractions and value types</Summary>
-    <PackageProjectUrl>https://github.com/Jpc-Automation/Physics/tree/master/src/Abstractions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Jpc-Automation/Physics/Abstractions</RepositoryUrl>
-    <PackageTags>Physics;Abstractions Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
+    <Description>Jpc Physics Value </Description>
+    <Summary>An Physics Value for easy conversions</Summary>
+    <PackageProjectUrl>https://github.com/Jpc-Automation/Physics/tree/master/src/Value</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jpc-Automation/Physics</RepositoryUrl>
+    <PackageTags>Physics;Value;Kernel;Math;Repository;ValueObject;Value Object;Jpc;Clean</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageReleaseNotes>
     </PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <DocumentationFile>bin\$(Configuration)\Jpc.Physics.Abstractions.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\Jpc.Physics.Value.xml</DocumentationFile>
 
   </PropertyGroup>
 

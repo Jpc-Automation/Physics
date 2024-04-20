@@ -1,4 +1,4 @@
-﻿namespace Jpc.Physics.Abstractions;
+﻿namespace Jpc.Physics.Value.Common;
 public abstract class ValueBase : IComparable, IComparable<ValueBase>
 {
     private int? _cachedHashCode;
