@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{E9FA5909-DDBC-4A78-BDE2-10A06B7507B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Value", "src\Abstractions\Value.csproj", "{CAE98ECD-4308-4AD5-B1F1-28845BB24F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Value", "src\Value\Value.csproj", "{CAE98ECD-4308-4AD5-B1F1-28845BB24F20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C3B56356-F57B-4C5D-851E-98E2F328A3BD}"
 EndProject
